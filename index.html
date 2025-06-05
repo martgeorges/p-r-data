@@ -1,0 +1,212 @@
+<html>
+<head>
+    <meta http-equiv="refresh" content="30">
+    <title>P+R Lux</title>
+        <script src="justgage/raphael-2.1.4.min.js"></script>
+        <script src="justgage/justgage.js"></script>
+        <link rel="shortcut icon" href="img/p-r-logo.jpg">
+        <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        #gauge-container {
+            width: 200px;
+            height: 160px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            flex: 1;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            height: 245px;
+        }
+        .box h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .box p {
+            color: #555;
+        }
+    .table-container {
+        margin-bottom: 30px;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: #e0e0e0;
+        color: #333;
+        padding: 10px;
+        text-align: center;
+    }
+
+    td {
+        background-color: #fff;
+        padding: 8px;
+        text-align: center;
+        border-top: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #f9f9f9;
+    }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1>P+R data - 2025-06-05 20:59:35 (Luxembourg)</h1>
+    <div class="table-container">
+    <table border="0" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>P+R</th>
+            <th>Max Capacity</th>
+            <th>Occupied</th>
+            <th>% Occupied</th>
+            <th>Max Capacity elec</th>
+            <th>Elec occ.</th>
+            <th>% Elec occ.</th>
+            <th>Max Capacity PMR</th>
+            <th>PMR occ.</th>
+            <th>% PMR occ.</th>
+        </tr>
+<tr><td>Belval</td><td>1403</td><td>91</td><td>6%</td><td>54</td><td>6</td><td>11%</td><td>33</td><td>3</td><td>9%</td></tr>
+<tr><td>Héienhaff</td><td>481</td><td>17</td><td>4%</td><td>0</td><td>0</td><td>0%</td><td>11</td><td>0</td><td>0%</td></tr>
+<tr><td>Luxembourg Gare</td><td>620</td><td>242</td><td>39%</td><td>18</td><td>9</td><td>50%</td><td>13</td><td>1</td><td>8%</td></tr>
+<tr><td>Mersch</td><td>405</td><td>19</td><td>5%</td><td>10</td><td>1</td><td>10%</td><td>11</td><td>0</td><td>0%</td></tr>
+<tr><td>Rodange </td><td>1553</td><td>76</td><td>5%</td><td>42</td><td>1</td><td>2%</td><td>20</td><td>0</td><td>0%</td></tr>
+<tr><td>Troisvierges</td><td>388</td><td>31</td><td>8%</td><td>6</td><td>0</td><td>0%</td><td>9</td><td>0</td><td>0%</td></tr>
+    </table>
+</div>
+<div align="center" style="margin-top: 40px;">
+    <h1>P+R graphics</h1>
+</div>
+<div class="container">
+    <div class="box">
+        <h2>Belval</h2>
+        <div id="gauge-container">
+            <div id="gauge-1" class="200x160px">
+                <script>
+                var g = new JustGage({
+                    id: "gauge-1",
+                    value: 91,
+                    min: 0,
+                    max: 1403,
+                    title: "Occupation",
+                    label: "(6%)"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <h2>Héienhaff</h2>
+        <div id="gauge-container">
+            <div id="gauge-2" class="200x160px">
+                <script>
+                var g = new JustGage({
+                    id: "gauge-2",
+                    value: 17,
+                    min: 0,
+                    max: 481,
+                    title: "Occupation",
+                    label: "(4%)"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <h2>Luxembourg Gare</h2>
+        <div id="gauge-container">
+            <div id="gauge-3" class="200x160px">
+                <script>
+                var g = new JustGage({
+                    id: "gauge-3",
+                    value: 242,
+                    min: 0,
+                    max: 620,
+                    title: "Occupation",
+                    label: "(39%)"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 30px;">
+    <div class="box">
+        <h2>Mersch</h2>
+        <div id="gauge-container">
+            <div id="gauge-4" class="200x160px">
+                <script>
+                var g = new JustGage({
+                    id: "gauge-4",
+                    value: 19,
+                    min: 0,
+                    max: 405,
+                    title: "Occupation",
+                    label: "(5%)"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <h2>Rodange </h2>
+        <div id="gauge-container">
+            <div id="gauge-5" class="200x160px">
+                <script>
+                var g = new JustGage({
+                    id: "gauge-5",
+                    value: 76,
+                    min: 0,
+                    max: 1553,
+                    title: "Occupation",
+                    label: "(5%)"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <h2>Troisvierges</h2>
+        <div id="gauge-container">
+            <div id="gauge-6" class="200x160px">
+                <script>
+                var g = new JustGage({
+                    id: "gauge-6",
+                    value: 31,
+                    min: 0,
+                    max: 388,
+                    title: "Occupation",
+                    label: "(8%)"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
