@@ -1,0 +1,54 @@
+name: refresh HTML toutes les 15 minutes (+ ou -)
+
+on:
+  schedule:
+    - cron: '*/15 4-17 * * *'
+  workflow_dispatch:        
+
+permissions:
+  contents: write           # Autorise les actions à écrire dans le repo
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Cloner le dépôt
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        token: ${{ secrets.GH_PAT }} 
+
+    - name: 🧮 Lire le compteur d'échecs
+      id: checkfail
+      run: |
+        if [ -f .failcount ]; then
+          count=$(cat .failcount)
+        else
+          count=0
+        fi
+        echo "Échecs consécutifs : $count"
+        echo "failcount=$count" >> $GITHUB_OUTPUT
+
+    - name: 🛑 Annuler si 2 échecs consécutifs
+      if: steps.checkfail.outputs.failcount == '2'
+      run: |
+        echo "Trop d'échecs consécutifs (2). On arrête le job."
+        exit 0
+        
+    - name: 🛠 Installer jq & bc
+      run: sudo apt-get install -y jq bc
+
+    - name: ⚙️ Lancer le script de génération
+      run: bash generate_once.sh
+
+    - name: ✅ Commit & push
+      env:
+        GH_TOKEN: ${{ secrets.GH_PAT }}
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+        git add index.html
+        git commit -m "Mise à jour automatique (cron)" || echo "Aucun changement"
+        git push origin main
