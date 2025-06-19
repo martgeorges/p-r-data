@@ -1,16 +1,15 @@
 <html>
 <head>
-    <meta http-equiv="refresh" content="30">
     <title>P+R Lux</title>
-        <script src="justgage/raphael-2.1.4.min.js"></script>
-        <script src="justgage/justgage.js"></script>
-        <link rel="shortcut icon" href="img/p-r-logo.jpg">
-        <style>
+    <script src="justgage/raphael-2.1.4.min.js"></script>
+    <script src="justgage/justgage.js"></script>
+    <link rel="shortcut icon" href="img/p-r-logo.jpg">
+    <style>
         body {
             margin: 0;
             padding: 20px;
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #E6E6E6;
         }
         .container {
             display: flex;
@@ -34,49 +33,119 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: center;
             height: 245px;
+            position: relative;
         }
         .box h2 {
-            margin-top: 0;
+            margin-top: 10px;
             color: #333;
         }
-        .box p {
-            color: #555;
+        .table-container {
+            margin-bottom: 0;
+            max-width: 100%;
+            overflow-x: auto;
+
         }
-    .table-container {
-        margin-bottom: 30px;
-        max-width: 100%;
-        overflow-x: auto;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th {
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        td {
+            background-color: #fff;
+            padding: 8px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border-radius: 10px;
-        overflow: hidden;
-    }
+        /* Toggle switch */
+        .switch-wrapper {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            height: 35px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 30px;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 29px;
+            width: 30px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #BF0A30;
+        }
+        input:checked + .slider:before {
+            transform: translateX(32px);
+        }
+        .labels {
+            position: absolute;
+            width: 100%;
+            top: 30px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5px;
+            color: #666;
+        }
 
-    th {
-        background-color: #e0e0e0;
-        color: #333;
-        padding: 10px;
-        text-align: center;
-    }
+        .header-toggle {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+        }
 
-    td {
-        background-color: #fff;
-        padding: 8px;
-        text-align: center;
-        border-top: 1px solid #ddd;
-    }
-
-    tr:nth-child(even) td {
-        background-color: #f9f9f9;
-    }
+        .switch.large-toggle {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     </style>
 </head>
 <body>
     <div align="center">
+<<<<<<< HEAD
         <h1>P+R data - 2025-06-19 09:53:01 (Luxembourg)</h1>
+=======
+        <h1>P+R data - 2025-06-19 10:15:38 (Luxembourg)</h1>
+>>>>>>> aa09c27 (added the few changes)
     <div class="table-container">
     <table border="0" cellspacing="0" cellpadding="5">
         <tr>
@@ -91,21 +160,37 @@
             <th>PMR occ.</th>
             <th>% PMR occ.</th>
         </tr>
+<<<<<<< HEAD
 <tr><td>Belval</td><td>1403</td><td>1272</td><td>91%</td><td>54</td><td>47</td><td>87%</td><td>33</td><td>3</td><td>9%</td></tr>
 <tr><td>Héienhaff</td><td>481</td><td>228</td><td>47%</td><td>0</td><td>0</td><td>0%</td><td>11</td><td>0</td><td>0%</td></tr>
 <tr><td>Luxembourg Gare</td><td>620</td><td>500</td><td>81%</td><td>18</td><td>15</td><td>83%</td><td>13</td><td>2</td><td>15%</td></tr>
 <tr><td>Mersch</td><td>405</td><td>285</td><td>70%</td><td>10</td><td>1</td><td>10%</td><td>11</td><td>2</td><td>18%</td></tr>
 <tr><td>Rodange </td><td>1553</td><td>829</td><td>53%</td><td>42</td><td>6</td><td>14%</td><td>20</td><td>1</td><td>5%</td></tr>
 <tr><td>Troisvierges</td><td>388</td><td>84</td><td>22%</td><td>6</td><td>1</td><td>17%</td><td>9</td><td>0</td><td>0%</td></tr>
+=======
+<tr><td>Belval</td><td>1403</td><td>1307</td><td>93%</td><td>54</td><td>48</td><td>89%</td><td>33</td><td>4</td><td>12%</td></tr>
+<tr><td>Héienhaff</td><td>481</td><td>236</td><td>49%</td><td>0</td><td>0</td><td>0%</td><td>11</td><td>0</td><td>0%</td></tr>
+<tr><td>Luxembourg Gare</td><td>620</td><td>501</td><td>81%</td><td>18</td><td>14</td><td>78%</td><td>13</td><td>2</td><td>15%</td></tr>
+<tr><td>Mersch</td><td>405</td><td>289</td><td>71%</td><td>10</td><td>1</td><td>10%</td><td>11</td><td>2</td><td>18%</td></tr>
+<tr><td>Rodange </td><td>1553</td><td>842</td><td>54%</td><td>42</td><td>6</td><td>14%</td><td>20</td><td>2</td><td>10%</td></tr>
+<tr><td>Troisvierges</td><td>388</td><td>86</td><td>22%</td><td>6</td><td>1</td><td>17%</td><td>9</td><td>0</td><td>0%</td></tr>
+>>>>>>> aa09c27 (added the few changes)
     </table>
 </div>
-<div align="center" style="margin-top: 40px;">
-    <h1>P+R graphics</h1>
+<div class="header-toggle" style="display: flex; align-items: center; justify-content: center; margin-top: 5px; gap: 20px;">
+    <h1 style="margin: 15px;">P+R graphics</h1>
+    <label class="switch large-toggle">
+        <input type="checkbox" id="globalToggle">
+        <span class="slider"></span>
+        <span class="labels" data-on="%" data-off="#"> </span>
+    </label>
 </div>
+
 <div class="container">
     <div class="box">
         <h2>Belval</h2>
         <div id="gauge-container">
+<<<<<<< HEAD
             <div id="gauge-1" class="200x160px">
                 <script>
                 var g = new JustGage({
@@ -118,11 +203,31 @@
                 });
                 </script>
             </div>
+=======
+            <div id="gauge-1" class="200x160px"></div>
+>>>>>>> aa09c27 (added the few changes)
         </div>
+        <input type="hidden" class="gauge-data" data-gauge="gauge-1" data-occupied="1307" data-percent="93" data-max="1403">
+        <script>
+            var gauge_1 = new JustGage({
+                id: "gauge-1",
+                value: 1307,
+                min: 0,
+                max: 1403,
+                title: "Occupation",
+            });
+            setTimeout(function () {
+            /*gauge_1.txtValue.attr({ "font-size": "25px" });*/
+            gauge_1.txtMin.attr({ "font-size": "18px" });
+            gauge_1.txtMax.attr({ "font-size": "18px" });
+            
+        }, 100);
+        </script>
     </div>
     <div class="box">
         <h2>Héienhaff</h2>
         <div id="gauge-container">
+<<<<<<< HEAD
             <div id="gauge-2" class="200x160px">
                 <script>
                 var g = new JustGage({
@@ -135,11 +240,31 @@
                 });
                 </script>
             </div>
+=======
+            <div id="gauge-2" class="200x160px"></div>
+>>>>>>> aa09c27 (added the few changes)
         </div>
+        <input type="hidden" class="gauge-data" data-gauge="gauge-2" data-occupied="236" data-percent="49" data-max="481">
+        <script>
+            var gauge_2 = new JustGage({
+                id: "gauge-2",
+                value: 236,
+                min: 0,
+                max: 481,
+                title: "Occupation",
+            });
+            setTimeout(function () {
+            /*gauge_2.txtValue.attr({ "font-size": "25px" });*/
+            gauge_2.txtMin.attr({ "font-size": "18px" });
+            gauge_2.txtMax.attr({ "font-size": "18px" });
+            
+        }, 100);
+        </script>
     </div>
     <div class="box">
         <h2>Luxembourg Gare</h2>
         <div id="gauge-container">
+<<<<<<< HEAD
             <div id="gauge-3" class="200x160px">
                 <script>
                 var g = new JustGage({
@@ -152,13 +277,32 @@
                 });
                 </script>
             </div>
+=======
+            <div id="gauge-3" class="200x160px"></div>
+>>>>>>> aa09c27 (added the few changes)
         </div>
+        <input type="hidden" class="gauge-data" data-gauge="gauge-3" data-occupied="501" data-percent="81" data-max="620">
+        <script>
+            var gauge_3 = new JustGage({
+                id: "gauge-3",
+                value: 501,
+                min: 0,
+                max: 620,
+                title: "Occupation",
+            });
+            setTimeout(function () {
+            /*gauge_3.txtValue.attr({ "font-size": "25px" });*/
+            gauge_3.txtMin.attr({ "font-size": "18px" });
+            gauge_3.txtMax.attr({ "font-size": "18px" });
+            
+        }, 100);
+        </script>
     </div>
-</div>
-<div class="container" style="margin-top: 30px;">
+</div><div class="container" style="margin-top: 30px;">
     <div class="box">
         <h2>Mersch</h2>
         <div id="gauge-container">
+<<<<<<< HEAD
             <div id="gauge-4" class="200x160px">
                 <script>
                 var g = new JustGage({
@@ -171,11 +315,31 @@
                 });
                 </script>
             </div>
+=======
+            <div id="gauge-4" class="200x160px"></div>
+>>>>>>> aa09c27 (added the few changes)
         </div>
+        <input type="hidden" class="gauge-data" data-gauge="gauge-4" data-occupied="289" data-percent="71" data-max="405">
+        <script>
+            var gauge_4 = new JustGage({
+                id: "gauge-4",
+                value: 289,
+                min: 0,
+                max: 405,
+                title: "Occupation",
+            });
+            setTimeout(function () {
+            /*gauge_4.txtValue.attr({ "font-size": "25px" });*/
+            gauge_4.txtMin.attr({ "font-size": "18px" });
+            gauge_4.txtMax.attr({ "font-size": "18px" });
+            
+        }, 100);
+        </script>
     </div>
     <div class="box">
         <h2>Rodange </h2>
         <div id="gauge-container">
+<<<<<<< HEAD
             <div id="gauge-5" class="200x160px">
                 <script>
                 var g = new JustGage({
@@ -188,11 +352,31 @@
                 });
                 </script>
             </div>
+=======
+            <div id="gauge-5" class="200x160px"></div>
+>>>>>>> aa09c27 (added the few changes)
         </div>
+        <input type="hidden" class="gauge-data" data-gauge="gauge-5" data-occupied="842" data-percent="54" data-max="1553">
+        <script>
+            var gauge_5 = new JustGage({
+                id: "gauge-5",
+                value: 842,
+                min: 0,
+                max: 1553,
+                title: "Occupation",
+            });
+            setTimeout(function () {
+            /*gauge_5.txtValue.attr({ "font-size": "25px" });*/
+            gauge_5.txtMin.attr({ "font-size": "18px" });
+            gauge_5.txtMax.attr({ "font-size": "18px" });
+            
+        }, 100);
+        </script>
     </div>
     <div class="box">
         <h2>Troisvierges</h2>
         <div id="gauge-container">
+<<<<<<< HEAD
             <div id="gauge-6" class="200x160px">
                 <script>
                 var g = new JustGage({
@@ -205,8 +389,57 @@
                 });
                 </script>
             </div>
+=======
+            <div id="gauge-6" class="200x160px"></div>
+>>>>>>> aa09c27 (added the few changes)
         </div>
+        <input type="hidden" class="gauge-data" data-gauge="gauge-6" data-occupied="86" data-percent="22" data-max="388">
+        <script>
+            var gauge_6 = new JustGage({
+                id: "gauge-6",
+                value: 86,
+                min: 0,
+                max: 388,
+                title: "Occupation",
+            });
+            setTimeout(function () {
+            /*gauge_6.txtValue.attr({ "font-size": "25px" });*/
+            gauge_6.txtMin.attr({ "font-size": "18px" });
+            gauge_6.txtMax.attr({ "font-size": "18px" });
+            
+        }, 100);
+        </script>
     </div>
 </div>
+
+<script>
+document.getElementById('globalToggle').addEventListener('change', function() {
+    var isChecked = this.checked;
+
+    document.querySelectorAll('.gauge-data').forEach(function(input) {
+        var gaugeId = input.dataset.gauge;
+        var gauge = window["gauge_" + gaugeId.split('-')[1]];
+        var occupied = parseInt(input.dataset.occupied);
+        var percent = parseInt(input.dataset.percent);
+        var max = parseInt(input.dataset.max);
+
+        if (isChecked) {
+            gauge.config.max = 100;
+            gauge.config.symbol = "%";
+            gauge.refresh(percent);
+            /*gauge.txtValue.attr({ "text": percent + "%" });*/
+            /*gauge.txtLabel.attr({ "text": "% Occupation" });*/
+            gauge.txtMax.attr({ "text": "100" });
+        } else {
+            gauge.config.max = max;
+            gauge.config.symbol = ""; 
+            gauge.refresh(occupied);
+            /*gauge.txtLabel.attr({ "text": "Occupation" });*/
+            gauge.txtMax.attr({ "text": max.toString() });
+        }
+    });
+});
+</script>
+
 </body>
 </html>
