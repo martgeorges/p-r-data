@@ -22,6 +22,7 @@ printf "+----------------------------+------------+----------+---------------+--
 cat <<EOF > "$HTML_FILE"
 <html>
 <head>
+    <meta http-equiv="refresh" content="30">
     <title>P+R Lux</title>
     <script src="justgage/raphael-2.1.4.min.js"></script>
     <script src="justgage/justgage.js"></script>
