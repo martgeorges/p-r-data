@@ -2,7 +2,7 @@ BASH project
 
 Graphics of the 6 differents CFL - P + R located in Luxembourg.
 
-Table summarising all the data :
+Table summarising every data :
 <img width="1440" alt="Capture d’écran 2025-07-06 à 21 35 54" src="https://github.com/user-attachments/assets/ac07ec4d-f4ce-4424-a375-2cf13f944bc0" />
 
 Graph with the total values.
