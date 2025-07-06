@@ -1,4 +1,4 @@
-BASH project 
+BASH/HTML project 
 
 Graphics of the 6 differents CFL - P + R located in Luxembourg.
 
