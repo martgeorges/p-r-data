@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 mkdir -p data
@@ -55,7 +56,7 @@ cat <<EOF > "$HTML_FILE"
             padding: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: center;
-            height: 245px;
+            height: 260px;
             position: relative;
         }
         .box h2 {
@@ -160,6 +161,37 @@ cat <<EOF > "$HTML_FILE"
             top: 50%;
             transform: translateY(-50%);
         }
+
+        .linear-wrap { margin-top: 8px; }
+.lg-row { margin: 6px 0; }
+.linear-gauge {
+  width: 100%;
+  height: 18px;
+  background: #ccc;
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+.linear-gauge .fill {
+  height: 100%;
+  width: 0%;
+  transition: width .6s ease;
+}
+.fill.pmr  { background: #6C8CFF; }   /* PMR = bleu */
+.fill.elec { background: #00B894; }   /* Élec = vert */
+
+/* Texte à l’intérieur de la barre */
+.linear-gauge .label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(0,0,0,0.4);
+}
     </style>
 </head>
 <body>
@@ -236,6 +268,16 @@ for file in "${parking_files[@]}"; do
     occupied=$(printf "%.0f" "$(echo "$total * $occ_ratio" | bc -l)")
     pct_occupied=$(printf "%.0f" "$(echo "$occ_ratio * 100" | bc -l)")
 
+    pmr_tot=$(jq -r '.totalPMRCapacity' "$file")
+    pmr_occ_ratio=$(jq -r '.currentPMROccupancy' "$file")
+    pmr_occ=$(printf "%.0f" "$(echo "$pmr_tot * $pmr_occ_ratio" | bc -l)")
+    pct_pmr=$(printf "%.0f" "$(echo "$pmr_occ_ratio * 100" | bc -l)")
+
+    elec_tot=$(jq -r '.totalECarCapacity' "$file")
+    elec_occ_ratio=$(jq -r '.currentECarOccupancy' "$file")
+    elec_occ=$(printf "%.0f" "$(echo "$elec_tot * $elec_occ_ratio" | bc -l)")
+    pct_elec=$(printf "%.0f" "$(echo "$elec_occ_ratio * 100" | bc -l)")
+
     cat <<EOF >> "$HTML_FILE"
     <div class="box">
         <h2>$name</h2>
@@ -258,6 +300,24 @@ for file in "${parking_files[@]}"; do
             
         }, 100);
         </script>
+            <div class="linear-wrap">
+      <!-- PMR -->
+      <div class="lg-row">
+        <div class="linear-gauge">
+          <div class="fill pmr" style="width: ${pct_pmr}%"></div>
+          <div class="label">PMR: $pmr_occ / $pmr_tot (${pct_pmr}%)</div>
+        </div>
+      </div>
+
+      <!-- Électriques -->
+      <div class="lg-row">
+        <div class="linear-gauge">
+          <div class="fill elec" style="width: ${pct_elec}%"></div>
+          <div class="label">Élec: $elec_occ / $elec_tot (${pct_elec}%)</div>
+        </div>
+      </div>
+    </div>
+
     </div>
 EOF
 
