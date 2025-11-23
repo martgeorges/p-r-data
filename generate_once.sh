@@ -14,6 +14,8 @@ curl -s "https://pr-mobile-a.cfl.lu/OpenData/ParkAndRide/YAX3J" -o data/parking_
 curl -s "https://pr-mobile-a.cfl.lu/OpenData/ParkAndRide/P8K2N" -o data/parking_L.json
 curl -s "https://pr-mobile-a.cfl.lu/OpenData/ParkAndRide/TWVD3" -o data/parking_T.json
 curl -s "https://pr-mobile-a.cfl.lu/OpenData/ParkAndRide/MZJDR" -o data/parking_H.json
+curl -s "https://pr-mobile-a.cfl.lu/OpenData/ParkAndRide/6SLSV" -o data/parking_D.json
+curl -s "https://pr-mobile-a.cfl.lu/OpenData/ParkAndRide/KAUBH" -o data/parking_K.json
 
 printf "+----------------------------+------------+----------+---------------+------------------+------------+----------------+------------------+------------+----------------+\n"
 printf "| %-26s | %-10s | %-9s | %-13s | %-17s | %-11s | %-14s | %-16s | %-11s | %-14s |\n" \
@@ -258,7 +260,7 @@ cat <<EOF >> "$HTML_FILE"
 <div class="container">
 EOF
 
-parking_files=(data/parking_B.json data/parking_H.json data/parking_L.json data/parking_M.json data/parking_R.json data/parking_T.json)
+parking_files=(data/parking_B.json data/parking_H.json data/parking_L.json data/parking_M.json data/parking_R.json data/parking_T.json data/parking_K.json data/parking_D.json)
 gauge_id=1
 
 for file in "${parking_files[@]}"; do
@@ -321,9 +323,9 @@ for file in "${parking_files[@]}"; do
     </div>
 EOF
 
-    if [[ $gauge_id -eq 3 ]]; then
-        echo "</div><div class=\"container\" style=\"margin-top: 30px;\">" >> "$HTML_FILE"
-    fi
+if [[ $gauge_id -eq 4 ]]; then
+    echo "</div><div class=\"container\" style=\"margin-top: 30px;\">" >> "$HTML_FILE"
+fi
 
     ((gauge_id++))
 done
